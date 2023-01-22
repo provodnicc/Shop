@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # packages
     'rest_framework',
     'rest_framework_simplejwt',
+    'mptt',
 
     # local
     'users.apps.UsersConfig',
@@ -164,3 +165,5 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+
+MPTT_ADMIN_LEVEL_INDENT = 20
