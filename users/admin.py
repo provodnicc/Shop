@@ -46,10 +46,10 @@ class UserModelAdmin(BaseUserAdmin):
 
     list_display = ('email', 'is_admin',)
     list_filter = ('is_admin',)
-    readonly_fields = ('is_staff',)
+    readonly_fields = ('is_staff', )
     fieldsets = (
         ('Credentials', {'fields': ('email', 'username', 'password')}),
-        ('Permissions', {'fields': ('is_admin', 'is_active', 'is_staff')}),
+        ('Permissions', {'fields': ('is_admin', 'is_active', 'is_staff',)}),
     )
 
     add_fieldsets = (
