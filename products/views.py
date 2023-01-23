@@ -1,4 +1,6 @@
-from rest_framework import generics
+from rest_framework import generics, views, status
+from rest_framework.response import Response
+
 from .models import Category, Product
 from .serializers import \
     (CategoryListRetrieveDeleteSerializer,
@@ -6,6 +8,7 @@ from .serializers import \
      ProductListRetrieveDestroySerializer,
      ProductCreateUpdateSerializer,
      )
+from storage.models import Storage, PRODUCT_STATUSES
 
 
 ##############
@@ -46,9 +49,15 @@ class ProductListAPIView(generics.ListAPIView):
     serializer_class = ProductListRetrieveDestroySerializer
 
 
-class ProductCreateAPIView(generics.CreateAPIView):
-    queryset = Product.objects.all()
-    serializer_class = ProductCreateUpdateSerializer
+class ProductCreateAPIView(views.APIView):
+    def post(self, request):
+        serializer = ProductCreateUpdateSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            product = Product.objects.create(**serializer.validated_data)
+            storage = Storage.objects.create(product=product)
+            product.save()
+            storage.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 class ProductUpdateAPIView(generics.RetrieveUpdateAPIView):
