@@ -9,7 +9,7 @@ PRODUCT_STATUSES = (
 
 
 class Storage(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, blank=True)
+    product = models.OneToOneField(Product, on_delete=models.SET_NULL, null=True, blank=True)
     quantity = models.PositiveIntegerField(default=0)
     status = models.CharField(max_length=255, choices=PRODUCT_STATUSES, default='Pending')
 

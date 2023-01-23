@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import StorageListAPIView, StorageCreateAPIView
+from .views import StorageListAPIView, StorageCreateAPIView, StorageRetrieveUpdateDestroyAPIView
 
 urlpatterns = [
     path('list/', StorageListAPIView.as_view(), name='storage-list'),
     path('create/', StorageCreateAPIView.as_view(), name='storage-create'),
+    path('<int:pk>/', StorageRetrieveUpdateDestroyAPIView.as_view(), name='storage-update'),
 ]
