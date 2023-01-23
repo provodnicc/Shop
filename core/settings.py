@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # local
     'users.apps.UsersConfig',
     'products.apps.ProductsConfig',
+    'storage.apps.StorageConfig',
 ]
 
 MIDDLEWARE = [

@@ -6,6 +6,8 @@ __pycache__
 db.sqlite3
 media
 users/migrations
+products/migrations
+storage/migrations
 
 # Backup files #
 *.bak
