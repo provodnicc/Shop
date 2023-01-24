@@ -23,3 +23,5 @@ class StorageUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Storage
         fields = ('product', 'quantity', 'status')
+
+

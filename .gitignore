@@ -8,6 +8,8 @@ media
 users/migrations
 products/migrations
 storage/migrations
+cart/migrations
+todo.txt
 
 # Backup files #
 *.bak
