@@ -9,7 +9,7 @@ users/migrations
 products/migrations
 storage/migrations
 cart/migrations
-todo.txt
+.env
 
 # Backup files #
 *.bak

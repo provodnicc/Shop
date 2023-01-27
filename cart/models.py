@@ -7,7 +7,7 @@ from products.models import Product
 class ProductOrder(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user_product_orders')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_orders')
-    quantity = models.IntegerField(default=1)
+    quantity = models.PositiveIntegerField(default=1)
     ordered = models.BooleanField(default=False)
 
     def __str__(self):
