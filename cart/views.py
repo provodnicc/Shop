@@ -1,4 +1,5 @@
 from django.utils import timezone
+from rest_framework.permissions import IsAuthenticated
 from products.models import Product
 from .models import ProductOrder, Order
 from rest_framework import views, status
@@ -9,6 +10,7 @@ from storage.models import Storage
 
 class AddToCartAPIView(views.APIView):
     """Add product to cart or increase its quantity"""
+    permission_classes = [IsAuthenticated]
 
     def post(self, request, pk):
         product = get_object_or_404(Product, pk=pk)
@@ -56,6 +58,7 @@ class AddToCartAPIView(views.APIView):
 
 class RemoveFromCartAPIView(views.APIView):
     """Remove product from cart without decreasing its quantity"""
+    permission_classes = [IsAuthenticated]
 
     def post(self, request, pk):
         product = get_object_or_404(Product, pk=pk)
@@ -90,6 +93,7 @@ class RemoveFromCartAPIView(views.APIView):
 
 class RemoveSingleProductFromCartAPIView(views.APIView):
     """Remove product by decreasing its quantity"""
+    permission_classes = [IsAuthenticated]
 
     def post(self, request, pk):
         product = get_object_or_404(Product, pk=pk)
