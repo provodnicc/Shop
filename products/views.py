@@ -1,5 +1,5 @@
 from rest_framework import generics, views, status
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 from rest_framework.response import Response
 from .models import Category, Product
 from .serializers import \
@@ -18,7 +18,7 @@ from storage.models import Storage
 class CategoryListAPIView(generics.ListAPIView):
     queryset = Category.objects.all()
     serializer_class = CategoryListRetrieveDeleteSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny, IsAuthenticated]
 
 
 class CategoryCreateAPIView(generics.CreateAPIView):
@@ -36,7 +36,7 @@ class CategoryUpdateAPIView(generics.RetrieveUpdateAPIView):
 class CategoryRetrieveAPIView(generics.RetrieveAPIView):
     queryset = Category.objects.all()
     serializer_class = CategoryListRetrieveDeleteSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny, IsAuthenticated]
 
 
 class CategoryDestroyAPIView(generics.RetrieveDestroyAPIView):
@@ -52,7 +52,7 @@ class CategoryDestroyAPIView(generics.RetrieveDestroyAPIView):
 class ProductListAPIView(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductListRetrieveDestroySerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny, IsAuthenticated]
 
 
 class ProductCreateAPIView(views.APIView):
@@ -77,7 +77,7 @@ class ProductUpdateAPIView(generics.RetrieveUpdateAPIView):
 class ProductRetrieveAPIView(generics.RetrieveAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductListRetrieveDestroySerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny, IsAuthenticated]
 
 
 class ProductDestroyAPIView(generics.RetrieveDestroyAPIView):
