@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
 from django.contrib.auth.models import PermissionsMixin
 
+
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
@@ -44,3 +45,8 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
         return self.is_admin
 
 
+class Token(models.Model):
+    refresh_token = models.CharField(max_length=155)
+
+    def __str__(self):
+        return self.refresh_token

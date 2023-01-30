@@ -4,7 +4,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
-from .models import UserModel
+from .models import UserModel, Token
 
 
 class UserCreationForm(forms.ModelForm):
@@ -64,6 +64,7 @@ class UserModelAdmin(BaseUserAdmin):
 
 
 admin.site.register(UserModel, UserModelAdmin)
+admin.site.register(Token)
 
 # if we are not using Django`s built in permissions
 admin.site.unregister(Group)
